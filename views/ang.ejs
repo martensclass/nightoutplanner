@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="ngapp">
+    <head>
+        <title>Night Out Planner</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+           <link rel='stylesheet' type='text/css'
+            href='/stylesheets/bootstrap.css'>
+        <link rel='stylesheet' type='text/css'
+            href='/stylesheets/app.css'>
+           
+             <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+             <script src="/js/bootstrap.min.js" ></script>
+             <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+  
+    </head>
+    <body>
+        <div class='container' ng-controller="main">
+        <div class='row'>
+            <div class='col-xs-12 text-center'>
+                <h1 class='really-big'>Night Out Planner</h1>
+                <span class="glyphicon glyphicon-cutlery really-big" style="margin-right: 50px;"></span>
+                <span class="glyphicon glyphicon-phone really-big" style="margin-right: 50px;"></span>
+                <span class="glyphicon glyphicon-glass really-big"></span>
+      
+        </div>
+        </div>
+        
+        <div class='row'>
+        <div class='col-xs-8 col-xs-offset-2 text-center'>
+            <p class='top-page'>Going out tonight? Tell me where you are and I can give you ideas of where to go. Have fun, and remember to drink responsibly!</p>
+        </div>
+    </div>
+    <br>
+
+    <div class='row' >
+     <form class='form'>
+         <div class='col-sm-10 col-sm-offset-0 col-xs-10 col-xs-offset-1'>
+         <div class='form-group'>
+            <input type='text' ng-model='city' class='form-control input-lg' id='cityField' name='cityField' placeholder='Where RU?'>
+        </div>
+        </div>
+        <div class='col-sm-2 col-sm-offset-0 col-xs-10 col-xs-offset-1'>
+            <button type='submit' ng-click='getList(city)' class='btn btn-warning btn-lg btn-block'>Let's Go!</button>        
+       </div>
+    </form>       
+      
+    </div>
+    
+    <div class="row">
+        <div class='col-xs-12 center-text text-center'>
+            <% if(user) { %>
+                <a href="/logout" class='btn btn-info'><i class="fa fa-twitter"></i>Logout of Twitter</a>
+            <% } else { %>
+                <a href="/auth/twitter" class='btn btn-info'> 
+                    <i class="fa fa-twitter"></i>Login With Twitter
+                </a>
+            <% } %>
+        </div>
+    </div>
+    <br>
+  <h3>Results for {{rescity}}</h3><hr>
+  <div ng-repeat="item in businesses">
+        <div class='row well well-sm' ng-hide='item.name==null'>
+            <div class='col-xs-2'>
+                <img ng-src='{{item.image_url}}' class='img-thumbnail img-responsive'>
+            </div>
+            <div class='col-xs-10'>
+                <h4>{{item.name}}
+                <% if(!user) { %>
+                <a href='/auth/twitter' class='btn btn-xs btn-warning' style='margin-left: 20px;'>{{item.going}} Going</a></h4>
+                <% } else { %>
+                <button class='btn btn-xs btn-warning btngo' style='margin-left: 20px;' ng-click='togglego(item, <%=user.id%>)'> {{item.going}} Going</button>
+                </h4>
+                <% } %>
+                <p><em>{{item.snippet_text}}</em></p>
+            </div>
+        </div>
+   </div>
+   
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+   <script src="/js/angular-cookies.min.js"></script>
+   <script src="/js/ngapp.js" ></script>
+
+  </html>

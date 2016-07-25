@@ -17,9 +17,15 @@
   },
   "homepage": "https://github.com/martensclass/nightoutplanner#readme",
   "dependencies": {
+    "angular-cookies": "^1.5.8",
+    "async-foreach": "^0.1.3",
     "body-parser": "^1.15.2",
     "ejs": "^2.4.2",
     "express": "^4.14.0",
-    "mongoose": "^4.5.3"
+    "express-session": "^1.14.0",
+    "mongoose": "^4.5.3",
+    "passport": "^0.3.2",
+    "passport-twitter": "^1.0.4",
+    "yelp": "^1.0.1"
   }
 }

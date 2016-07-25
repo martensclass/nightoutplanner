@@ -1,0 +1,18 @@
+<% include ./partials/header %>
+
+    <h1>Results for <%=city %></h1><hr>
+
+    <% businesses.forEach(function(item){ %>
+        <div class='row well well-sm'>
+            <div class='col-xs-2'>
+                <img src='<%=item.image_url %>' class='img-thumbnail img-responsive'>
+            </div>
+            <div class='col-xs-10'>
+                <h4><%=item.name%><button class='btn btn-xs btn-warning' style='margin-left: 20px;'>0 Going</button></h4>
+                <p><em><%=item.snippet_text %></em></p>
+            </div>
+        </div>
+   <% }); %>
+    
+</div> <!--end container from header -->
+<% include ./partials/footer %>
