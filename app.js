@@ -5,10 +5,10 @@ var mongoose=require('mongoose'),
     app=express();
     
 var Strategy = require('passport-twitter').Strategy;
-var forEach = require('async-foreach').forEach;
 
-mongoose.connect("mongodb://localhost/bethere");
-
+//mongoose.connect("mongodb://localhost/bethere");
+var url=process.env.DBURL || "mongodb://localhost/bethere";
+mongoose.connect(url);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.json());
