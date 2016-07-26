@@ -28,7 +28,7 @@ var yelp = new Yelp({
 passport.use(new Strategy({
     consumerKey: 'ERaFtCjCmgJ6dXHiiEFDBMHUp',
     consumerSecret: 'dQOVSJgMGavQfs8fhStn74fmtmrnLIFxxRyMmSuxUARvc70qgJ',
-    callbackURL: 'https://night-out-planner-martensclass.c9users.io/auth/twitter/callback'
+    callbackURL: 'https://fierce-sierra-67177.herokuapp.com/auth/twitter/callback'
   },
   function(token, tokenSecret, profile, cb) {
     // In this example, the user's Twitter profile is supplied as the user
